@@ -18,7 +18,7 @@ type configChangelog struct {
 	Path string `json:"path"`
 }
 
-func tweetChangelog(text string) error {
+func TweetChangelog(text string) error {
 	d, err := loadConfigChangelog()
 	if err != nil {
 		return err

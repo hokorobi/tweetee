@@ -8,7 +8,7 @@ import (
 	"github.com/lxn/win"
 )
 
-func genText(args []string) string {
+func GenText(args []string) string {
 	var text string
 	for _, a := range args {
 		// スペースがあったら "" でくくる
@@ -20,7 +20,7 @@ func genText(args []string) string {
 	return text
 }
 
-func errorMessageBox(message string) {
+func ErrorMessageBox(message string) {
 	win.MessageBox(win.HWND(0), UTF16PtrFromString(message), UTF16PtrFromString("Error"), win.MB_OK+win.MB_ICONEXCLAMATION)
 }
 

@@ -15,20 +15,9 @@ func main() {
 
 	text := tw.GenText(os.Args[1:])
 
-	var warn bool
-	err := tw.TweetChangelog(text)
+	err := tw.PostBsky(text)
 	if err != nil {
 		goutils.PrintTee(err)
-		warn = true
-	}
-
-	err = tw.PostBsky(text)
-	if err != nil {
-		goutils.PrintTee(err)
-		warn = true
-	}
-
-	if warn {
 		tw.ErrorMessageBox("Check log file.")
 	}
 }

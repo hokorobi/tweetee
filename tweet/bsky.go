@@ -42,7 +42,7 @@ type config struct {
 	Password   string
 }
 
-func postBsky(text string) error {
+func PostBsky(text string) error {
 	// Bluesky APIにアクセスするためのクライアントを初期化します。
 	cli := &xrpc.Client{
 		Host: "https://bsky.social",
