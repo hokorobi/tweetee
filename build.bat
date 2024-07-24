@@ -1,4 +1,3 @@
 go vet
-go vet -vettool=C:\Users\syuhe\bin\shadow.exe
-go vet -vettool=C:\Users\syuhe\bin\defers.exe
+for %%j in (shadow, defers) do for /f %%i in ('where %%j') do go vet --vettool=%%i
 go build -ldflags -s
