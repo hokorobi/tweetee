@@ -15,7 +15,11 @@ func GenText(args []string) string {
 		if strings.Index(a, " ") >= 0 {
 			a = strconv.Quote(a)
 		}
-		text = text + " " + a
+		if len(text) == 0 {
+			text = a
+		} else {
+			text = text + " " + a
+		}
 	}
 	return text
 }
