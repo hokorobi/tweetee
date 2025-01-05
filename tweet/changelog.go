@@ -68,7 +68,7 @@ func matchDate(t string) bool {
 }
 
 func getTweet(text string) []string {
-	text = time.Now().Format("15:04") + text
+	text = time.Now().Format("15:04") + " " + text
 
 	var tweetLines []string
 	for _, b := range strings.Split(text, "\n") {

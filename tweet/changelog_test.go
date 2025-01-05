@@ -32,9 +32,9 @@ func TestGetTweet(t *testing.T) {
 		args   string
 		answer []string
 	}{
-		{" test", []string{fmt.Sprintf("\t%s test", n), ""}},
-		{" test test", []string{fmt.Sprintf("\t%s test test", n), ""}},
-		{" a\nb", []string{fmt.Sprintf("\t%s a", n), "\tb", ""}},
+		{"test", []string{fmt.Sprintf("\t%s test", n), ""}},
+		{"test test", []string{fmt.Sprintf("\t%s test test", n), ""}},
+		{"a\nb", []string{fmt.Sprintf("\t%s a", n), "\tb", ""}},
 		// {[]string{"a \n b"}, []string{fmt.Sprintf("\t%s a", n), "\tb", ""}},                               // 実際の動きと違う？
 		// {[]string{"test test\ntest test"}, []string{fmt.Sprintf("\t%s test test", n), "\ttest test", ""}}, // 実際の動きと違う？
 	}
