@@ -9,19 +9,13 @@ import (
 )
 
 func GenText(args []string) string {
-	var text string
-	for _, a := range args {
-		// スペースがあったら "" でくくる
-		if strings.Index(a, " ") >= 0 {
-			a = strconv.Quote(a)
-		}
-		if len(text) == 0 {
-			text = a
-		} else {
-			text = text + " " + a
+	// スペースがあったら "" でくくる
+	for i, v := range args {
+		if strings.Index(v, " ") >= 0 {
+			args[i] = strconv.Quote(v)
 		}
 	}
-	return text
+	return strings.Join(args, " ")
 }
 
 func ErrorMessageBox(message string) {
