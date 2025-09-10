@@ -11,7 +11,7 @@ import (
 func GenText(args []string) string {
 	// スペースがあったら "" でくくる
 	for i, v := range args {
-		if strings.Index(v, " ") >= 0 {
+		if strings.Contains(v, " ") {
 			args[i] = strconv.Quote(v)
 		}
 	}

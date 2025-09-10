@@ -16,7 +16,6 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/bluesky-social/indigo/api/atproto"
-	comatproto "github.com/bluesky-social/indigo/api/atproto"
 	"github.com/bluesky-social/indigo/api/bsky"
 	lexutil "github.com/bluesky-social/indigo/lex/util"
 	"github.com/bluesky-social/indigo/xrpc"
@@ -130,7 +129,7 @@ func PostBsky(text string) error {
 	ctx := context.Background()
 	_, err = atproto.RepoCreateRecord(ctx, cli, inp)
 	if err != nil {
-		return fmt.Errorf("Error posting to bluesky: %w", err)
+		return fmt.Errorf("error posting to bluesky: %w", err)
 	}
 	return nil
 }
@@ -232,7 +231,7 @@ func addLink(xrpcc *xrpc.Client, post *bsky.FeedPost, link string) {
 	if err != nil {
 		return
 	}
-	resp2, err := comatproto.RepoUploadBlob(context.TODO(), xrpcc, bytes.NewReader(b))
+	resp2, err := atproto.RepoUploadBlob(context.TODO(), xrpcc, bytes.NewReader(b))
 	if err != nil {
 		return
 	}
