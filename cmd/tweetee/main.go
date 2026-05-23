@@ -28,6 +28,12 @@ func main() {
 		warn = true
 	}
 
+	err = tw.PostNostr(text)
+	if err != nil {
+		goutils.PrintTee(err)
+		warn = true
+	}
+
 	if warn {
 		tw.ErrorMessageBox("Check log file.")
 	}
