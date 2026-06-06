@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"fiatjaf.com/nostr"
+	"github.com/nbd-wtf/go-nostr"
 )
 
 func PostNostr(text string) error {
@@ -17,11 +17,11 @@ func PostNostr(text string) error {
 	}
 
 	// 秘密鍵から公開鍵を算出
-	pk := nostr.MustPubKeyFromHex(string(key))
+	pubKey, _ := nostr.GetPublicKey(string(key))
 
 	// 2. 投稿内容（Event）の作成
 	ev := nostr.Event{
-		PubKey:    pk,
+		PubKey:    pubKey,
 		CreatedAt: nostr.Now(),
 		Kind:      nostr.KindTextNote,
 		Tags:      nil,
@@ -29,15 +29,15 @@ func PostNostr(text string) error {
 	}
 
 	// 3. イベントに署名
-	err = ev.Sign(pk)
+	err = ev.Sign(pubKey)
 	if err != nil {
 		return err
 	}
 
 	// 4. リレーに接続して送信
 	ctx := context.Background()
-	relayURL := "wss://yabu.me"
-	relay, err := nostr.RelayConnect(ctx, relayURL, nostr.RelayOptions{})
+	relayURL := "wss://relay.yabu.me"
+	relay, err := nostr.RelayConnect(ctx, relayURL)
 	if err != nil {
 		return err
 	}
